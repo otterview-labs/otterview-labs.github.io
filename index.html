@@ -1,6 +1,109 @@
-<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="Otterview Labs — small, self-hosted tools for coding workflows, visual search, and data exploration."><title>Otterview Labs — 自己运行，自己掌控</title><link rel="stylesheet" href="/styles.css"></head><body>
-<header class="site-header"><a class="brand" href="/">OTTERVIEW <span>LABS</span></a><nav class="nav" aria-label="主导航"><a href="#projects">项目</a><a href="/blog.html">技术博客</a><a class="nav-github" href="https://github.com/otterview-labs">GitHub ↗</a></nav></header>
-<main><section class="container hero"><div><div class="eyebrow">OTTERVIEW LABS · OPEN SOURCE</div><h1>把工具做小，<br><em>把控制权留在自己手里。</em></h1><p class="hero-copy">我们做一些可以自己运行、自己理解、自己维护的工具，解决编程协作、视觉检索和数据探索中的具体问题。</p><div class="actions"><a class="button button-primary" href="#projects">看看项目 ↓</a><a class="button button-secondary" href="/blog.html">读技术博客 →</a></div></div><aside class="hero-art" aria-label="Otterview Labs 项目概览"><div class="art-top"><span>OTTERVIEW / 001</span><span>SELF-HOSTED</span></div><div class="art-mark">O</div><div class="art-title">Small tools.<br>Clear ownership.</div><div class="art-subtitle">为真实工作流做的开源工具。</div><div class="art-list"><a href="https://github.com/otterview-labs/agentbridge"><span>01</span> agentBridge <span>↗</span></a><a href="https://github.com/otterview-labs/SightIndex"><span>02</span> SightIndex <span>↗</span></a><a href="https://github.com/otterview-labs/chatbi"><span>03</span> ChatBI <span>↗</span></a></div></aside></section>
-<section class="container section" id="projects"><div class="section-head"><div><div class="section-kicker">01 / PROJECTS</div><h2>正在做的事情</h2></div><p class="section-intro">从手边的问题开始，把复杂的工作流拆成可以运行的小工具。</p></div><div class="project-grid"><a class="project-card" href="https://github.com/otterview-labs/agentbridge"><div class="card-index">01</div><h3>agentBridge</h3><p>把 Codex、Claude Code 和 Gemini CLI 会话放在一起管理，本机运行，也能查看远程机器。</p><div class="card-link">查看仓库 ↗</div></a><a class="project-card" href="https://github.com/otterview-labs/SightIndex"><div class="card-index">02</div><h3>SightIndex</h3><p>在自己的设备上检索图像、视频和摄像头流，适合个人资料库和本地媒体。</p><div class="card-link">查看仓库 ↗</div></a><a class="project-card" href="https://github.com/otterview-labs/chatbi"><div class="card-index">03</div><h3>ChatBI</h3><p>用自然语言查询业务数据，探索 Text-to-SQL 与报告生成。</p><div class="card-link">查看仓库 ↗</div></a></div></section>
-<section class="container blog-band" id="blog"><div class="section-head"><div><div class="section-kicker">02 / JOURNAL</div><h2>技术博客</h2></div><p class="section-intro">记录设计取舍、实现过程和那些值得留下来的小经验。</p></div><div class="post-grid"><a class="post-card" href="/self-hosted-first.html"><div class="post-meta">2026.09.26 · 思考</div><h3>为什么我们先做自托管工具</h3><p>从数据、成本和维护边界出发，重新看一遍“自己运行”这件事。</p></a><a class="post-card" href="/agentbridge-session-management.html"><div class="post-meta">2026.09.26 · agentBridge</div><h3>把多个 CLI 会话放到同一处</h3><p>agentBridge 想解决的，是编程工具越来越多之后的切换成本。</p></a><a class="post-card" href="/sightindex-local-search.html"><div class="post-meta">2026.09.26 · SightIndex</div><h3>本地视觉检索从哪里开始</h3><p>先把数据留在设备上，再谈更复杂的搜索体验。</p></a></div></section>
-<section class="container about"><h2>Otterview Labs</h2><p>我们相信，工具应该让人更接近自己的数据和工作流。项目会慢慢长出来，代码、文档和问题也都公开放在 GitHub 上。</p></section></main><footer class="site-footer"><div class="container site-footer-inner"><span>© 2026 Otterview Labs</span><span><a href="https://github.com/otterview-labs">GitHub</a> · <a href="/blog.html">Journal</a> · <a href="https://otterview.ai">otterview.ai</a></span></div></footer></body></html>
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Otterview Labs：视觉产品与 AI 硬件，让智能进入真实的设备与现场。">
+  <title>Otterview Labs — 视觉产品 × AI 硬件</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="grain" aria-hidden="true"></div>
+  <header class="site-header">
+    <a class="wordmark" href="#top" aria-label="Otterview Labs 首页"><span class="wordmark-mark">O</span><span>OTTERVIEW<br><b>LABS</b></span></a>
+    <nav class="nav" aria-label="主导航">
+      <a href="#products">产品</a>
+      <a href="#stack">底座</a>
+      <a href="#future">未来计划</a>
+      <a href="https://github.com/otterview-labs" target="_blank" rel="noreferrer">GitHub ↗</a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero shell">
+      <div class="hero-copy">
+        <div class="kicker"><span class="dot"></span> OTTERVIEW LABS / 2026</div>
+        <h1>让智能进入<br><em>真实的设备与现场。</em></h1>
+        <p class="lede">我们做两条产品线：视觉产品和 AI 硬件。把感知、推理和数据闭环放进真正需要它们的地方。</p>
+        <div class="hero-actions">
+          <a class="button button-dark" href="#products">查看产品线 <span>↓</span></a>
+          <a class="text-link" href="#stack">了解我们怎么做 <span>↗</span></a>
+        </div>
+      </div>
+
+      <div class="hero-board" aria-label="Otterview Labs 产品版图">
+        <div class="board-top"><span>FIELD SYSTEM / 01</span><span>VISION × HARDWARE</span></div>
+        <div class="board-screen">
+          <div class="screen-grid"></div>
+          <div class="screen-caption">FROM<br><strong>PERCEPTION</strong><br>TO DEVICE</div>
+          <div class="pulse pulse-a"></div><div class="pulse pulse-b"></div><div class="pulse pulse-c"></div>
+          <div class="screen-node node-a"><span>01</span><b>视觉</b><small>SEE / SEARCH / REVIEW</small></div>
+          <div class="screen-node node-b"><span>02</span><b>硬件</b><small>RUN / INTERACT / DEPLOY</small></div>
+          <div class="screen-line line-a"></div><div class="screen-line line-b"></div>
+        </div>
+        <div class="board-bottom"><span>LOCAL INTELLIGENCE</span><span class="status"><i></i> BUILDING NOW</span></div>
+      </div>
+    </section>
+
+    <section class="statement shell">
+      <div class="statement-index">01 / POINT OF VIEW</div>
+      <div class="statement-content"><h2>AI 不应该只停留在屏幕里。</h2><p>摄像头看见的现场、设备产生的数据、边缘盒里的模型、一个人真正要完成的工作，应该连成一条完整的链路。我们把软件做成能进入设备的能力，把设备做成能持续变好的产品。</p></div>
+    </section>
+
+    <section class="products shell" id="products">
+      <div class="section-head"><div><div class="section-label">02 / PRODUCT LINES</div><h2>两条产品线</h2></div><p>视觉负责理解现场，硬件负责把能力带到现场。</p></div>
+      <div class="product-grid">
+        <article class="product-card vision-card">
+          <div class="product-meta"><span>LINE 01</span><span class="pill pill-teal">CURRENT</span></div>
+          <div class="product-symbol symbol-eye">◉</div>
+          <h3>视觉产品线</h3>
+          <p>让图像、视频和摄像头流变成可搜索、可判断、可复核的业务信息。</p>
+          <ul><li>工业视觉检测与视频分析</li><li>人员、车辆与跨摄像头检索</li><li>VLM 复判、证据和人工审核</li><li>训练数据与模型持续迭代</li></ul>
+          <div class="product-foot"><span>VISION SYSTEMS</span><a href="#stack">看技术底座 ↗</a></div>
+        </article>
+        <article class="product-card hardware-card">
+          <div class="product-meta"><span>LINE 02</span><span class="pill pill-orange">CURRENT</span></div>
+          <div class="product-symbol symbol-box">□</div>
+          <h3>硬件产品线</h3>
+          <p>把视觉、语音和边缘计算装进设备，解决一个真实场景里的具体问题。</p>
+          <ul><li>边缘视觉 AI 盒与行业一体机</li><li>AI 交互、展示和接待设备</li><li>视觉 / 语音模组与行业终端</li><li>现场部署、升级与远程运维</li></ul>
+          <div class="product-foot"><span>HARDWARE SYSTEMS</span><a href="#hardware">看产品形态 ↗</a></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="hardware shell" id="hardware">
+      <div class="section-head"><div><div class="section-label">03 / PRODUCT FORMS</div><h2>从盒子到终端</h2></div><p>先用现成硬件验证，再把稳定的能力做成产品。</p></div>
+      <div class="hardware-grid">
+        <div class="hardware-item"><span class="item-no">A</span><div><h3>边缘视觉盒</h3><p>多路视频、低延迟推理、断网可用，面向工业和现场设备。</p></div><span class="item-arrow">↗</span></div>
+        <div class="hardware-item"><span class="item-no">B</span><div><h3>AI 交互一体机</h3><p>屏幕、摄像头、麦克风和本地算力，服务展厅、园区和售前。</p></div><span class="item-arrow">↗</span></div>
+        <div class="hardware-item"><span class="item-no">C</span><div><h3>行业智能终端</h3><p>模组、眼镜、记录设备，把视觉和语音带到人的工作路径里。</p></div><span class="item-arrow">↗</span></div>
+        <div class="hardware-item"><span class="item-no">D</span><div><h3>边缘视频基础设施</h3><p>解码、推理、编码、监控和远程运维，支撑规模化交付。</p></div><span class="item-arrow">↗</span></div>
+      </div>
+    </section>
+
+    <section class="stack shell" id="stack">
+      <div class="section-head"><div><div class="section-label">04 / THE STACK</div><h2>产品背后的底座</h2></div><p>平台不是终点，是让每一台设备持续变好的基础设施。</p></div>
+      <div class="stack-layout">
+        <div class="stack-rail"><span>01</span><span>02</span><span>03</span><span>04</span></div>
+        <div class="stack-list">
+          <div class="stack-row"><div><b>感知</b><small>VIDEO / IMAGE / AUDIO / SENSOR</small></div><p>从现场采集真实数据，让设备知道发生了什么。</p><strong>↗</strong></div>
+          <div class="stack-row"><div><b>推理</b><small>VISION / VLM / EDGE RUNTIME</small></div><p>让模型在 GPU、NPU 和边缘设备上稳定运行。</p><strong>↗</strong></div>
+          <div class="stack-row"><div><b>闭环</b><small>LABEL / REVIEW / TRAIN / EVALUATE</small></div><p>数据经过标注、复核、训练和评测，能力持续迭代。</p><strong>↗</strong></div>
+          <div class="stack-row"><div><b>交付</b><small>DEPLOY / MONITOR / RECOVER</small></div><p>设备能部署、能升级、能监控，也能在现场恢复。</p><strong>↗</strong></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="open shell">
+      <div class="open-inner"><div><div class="section-label">OPEN PROJECTS</div><h2>有些能力，<br>我们会先公开。</h2></div><div class="open-copy"><p>agentBridge、SightIndex、ChatBI 和 LutraPipe 是公开项目与技术出口。它们服务于研发、硬件和视觉产品，也让更多人可以理解我们正在建设什么。</p><a class="text-link" href="https://github.com/otterview-labs" target="_blank" rel="noreferrer">浏览 GitHub 项目 <span>↗</span></a></div></div>
+    </section>
+
+    <section class="future shell" id="future">
+      <div class="future-mark">NEXT / 03</div><div class="future-copy"><div class="section-label">FUTURE PLAN</div><h2>机器人，<br><em>等感知和设备先长好。</em></h2><p>机器人是未来计划。我们会先把视觉感知、边缘计算、设备控制和数据闭环做扎实，再进入更复杂的机器人和具身智能设备。</p></div><div class="future-dots"><span></span><span></span><span></span><small>NOT YET / IN PREPARATION</small></div>
+    </section>
+  </main>
+
+  <footer class="site-footer"><div class="shell footer-inner"><a class="wordmark" href="#top"><span class="wordmark-mark">O</span><span>OTTERVIEW<br><b>LABS</b></span></a><div class="footer-note">视觉产品 × AI 硬件<br><span>让智能进入真实的设备与现场。</span></div><div class="footer-links"><a href="https://github.com/otterview-labs" target="_blank" rel="noreferrer">GitHub ↗</a><span>© 2026</span></div></div></footer>
+</body>
+</html>
