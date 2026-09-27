@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Otterview Labs</title>
+<meta name="description" content="Otterview Labs 做视觉检索软件，也做跑这些软件的边缘盒。">
+<meta name="color-scheme" content="light dark">
+<meta property="og:site_name" content="Otterview Labs">
+<meta property="og:title" content="Otterview Labs">
+<meta property="og:description" content="Otterview Labs 做视觉检索软件，也做跑这些软件的边缘盒。">
+<meta property="og:image" content="https://otterview.ai/assets/art/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta property="og:url" content="https://otterview.ai/zh/">
+<meta property="og:locale" content="zh_CN">
+<link rel="canonical" href="https://otterview.ai/zh/">
+<link rel="alternate" hreflang="en" href="https://otterview.ai/">
+<link rel="alternate" hreflang="zh-CN" href="https://otterview.ai/zh/">
+<link rel="alternate" hreflang="x-default" href="https://otterview.ai/">
+<script>
+/* Language: a saved choice wins; otherwise Chinese browsers landing on English go to Chinese once. */
+(function () {
+  try {
+    var here = 'zh', other = '../', saved = localStorage.getItem('ov-lang');
+    if (saved) { if (saved !== here) location.replace(other + location.hash); return; }
+    if (here === 'en') {
+      var langs = (navigator.languages || [navigator.language || '']).join(',').toLowerCase();
+      if (/(^|,)zh/.test(langs)) location.replace(other + location.hash);
+    }
+  } catch (e) {}
+})();
+</script>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' shape-rendering='crispEdges'%3E%3Crect x='3' y='2' width='2' height='1' fill='%234a3222'/%3E%3Crect x='11' y='2' width='2' height='1' fill='%234a3222'/%3E%3Crect x='2' y='3' width='1' height='1' fill='%234a3222'/%3E%3Crect x='3' y='3' width='2' height='1' fill='%238b5e3c'/%3E%3Crect x='5' y='3' width='6' height='1' fill='%234a3222'/%3E%3Crect x='11' y='3' width='2' height='1' fill='%238b5e3c'/%3E%3Crect x='13' y='3' width='1' height='1' fill='%234a3222'/%3E%3Crect x='1' y='4' width='1' height='1' fill='%234a3222'/%3E%3Crect x='2' y='4' width='12' height='1' fill='%238b5e3c'/%3E%3Crect x='14' y='4' width='1' height='1' fill='%234a3222'/%3E%3Crect x='1' y='5' width='1' height='1' fill='%234a3222'/%3E%3Crect x='2' y='5' width='2' height='1' fill='%238b5e3c'/%3E%3Crect x='4' y='5' width='1' height='1' fill='%23ffffff'/%3E%3Crect x='5' y='5' width='1' height='1' fill='%232a2824'/%3E%3Crect x='6' y='5' width='4' height='1' fill='%238b5e3c'/%3E%3Crect x='10' y='5' width='1' height='1' fill='%23ffffff'/%3E%3Crect x='11' y='5' width='1' height='1' fill='%232a2824'/%3E%3Crect x='12' y='5' width='2' height='1' fill='%238b5e3c'/%3E%3Crect x='14' y='5' width='1' height='1' fill='%234a3222'/%3E%3Crect x='1' y='6' width='1' height='1' fill='%234a3222'/%3E%3Crect x='2' y='6' width='2' height='1' fill='%238b5e3c'/%3E%3Crect x='4' y='6' width='2' height='1' fill='%232a2824'/%3E%3Crect x='6' y='6' width='4' height='1' fill='%238b5e3c'/%3E%3Crect x='10' y='6' width='2' height='1' fill='%232a2824'/%3E%3Crect x='12' y='6' width='2' height='1' fill='%238b5e3c'/%3E%3Crect x='14' y='6' width='1' height='1' fill='%234a3222'/%3E%3Crect x='1' y='7' width='1' height='1' fill='%234a3222'/%3E%3Crect x='2' y='7' width='1' height='1' fill='%238b5e3c'/%3E%3Crect x='3' y='7' width='10' height='1' fill='%23ecd9b6'/%3E%3Crect x='13' y='7' width='1' height='1' fill='%238b5e3c'/%3E%3Crect x='14' y='7' width='1' height='1' fill='%234a3222'/%3E%3Crect x='0' y='8' width='2' height='1' fill='%234a3222'/%3E%3Crect x='2' y='8' width='5' height='1' fill='%23ecd9b6'/%3E%3Crect x='7' y='8' width='2' height='1' fill='%232a2824'/%3E%3Crect x='9' y='8' width='5' height='1' fill='%23ecd9b6'/%3E%3Crect x='14' y='8' width='2' height='1' fill='%234a3222'/%3E%3Crect x='1' y='9' width='1' height='1' fill='%234a3222'/%3E%3Crect x='2' y='9' width='12' height='1' fill='%23ecd9b6'/%3E%3Crect x='14' y='9' width='1' height='1' fill='%234a3222'/%3E%3Crect x='0' y='10' width='2' height='1' fill='%234a3222'/%3E%3Crect x='2' y='10' width='5' height='1' fill='%23ecd9b6'/%3E%3Crect x='7' y='10' width='2' height='1' fill='%234a3222'/%3E%3Crect x='9' y='10' width='5' height='1' fill='%23ecd9b6'/%3E%3Crect x='14' y='10' width='2' height='1' fill='%234a3222'/%3E%3Crect x='1' y='11' width='1' height='1' fill='%234a3222'/%3E%3Crect x='2' y='11' width='1' height='1' fill='%238b5e3c'/%3E%3Crect x='3' y='11' width='10' height='1' fill='%23ecd9b6'/%3E%3Crect x='13' y='11' width='1' height='1' fill='%238b5e3c'/%3E%3Crect x='14' y='11' width='1' height='1' fill='%234a3222'/%3E%3Crect x='2' y='12' width='1' height='1' fill='%234a3222'/%3E%3Crect x='3' y='12' width='10' height='1' fill='%238b5e3c'/%3E%3Crect x='13' y='12' width='1' height='1' fill='%234a3222'/%3E%3Crect x='3' y='13' width='10' height='1' fill='%234a3222'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="../site.css">
+</head>
+<body>
+<div class="page">
+
+<header class="top">
+  <a class="brand" href="./" aria-label="Otterview Labs"><svg class="otter " width="32" height="32" viewBox="0 0 16 16" shape-rendering="crispEdges" aria-hidden="true"><rect x="3" y="2" width="2" height="1" class="o-k"/><rect x="11" y="2" width="2" height="1" class="o-k"/><rect x="2" y="3" width="1" height="1" class="o-k"/><rect x="3" y="3" width="2" height="1" class="o-b"/><rect x="5" y="3" width="6" height="1" class="o-k"/><rect x="11" y="3" width="2" height="1" class="o-b"/><rect x="13" y="3" width="1" height="1" class="o-k"/><rect x="1" y="4" width="1" height="1" class="o-k"/><rect x="2" y="4" width="12" height="1" class="o-b"/><rect x="14" y="4" width="1" height="1" class="o-k"/><rect x="1" y="5" width="1" height="1" class="o-k"/><rect x="2" y="5" width="2" height="1" class="o-b"/><rect x="4" y="5" width="1" height="1" class="o-w"/><rect x="5" y="5" width="1" height="1" class="o-e"/><rect x="6" y="5" width="4" height="1" class="o-b"/><rect x="10" y="5" width="1" height="1" class="o-w"/><rect x="11" y="5" width="1" height="1" class="o-e"/><rect x="12" y="5" width="2" height="1" class="o-b"/><rect x="14" y="5" width="1" height="1" class="o-k"/><rect x="1" y="6" width="1" height="1" class="o-k"/><rect x="2" y="6" width="2" height="1" class="o-b"/><rect x="4" y="6" width="2" height="1" class="o-e"/><rect x="6" y="6" width="4" height="1" class="o-b"/><rect x="10" y="6" width="2" height="1" class="o-e"/><rect x="12" y="6" width="2" height="1" class="o-b"/><rect x="14" y="6" width="1" height="1" class="o-k"/><rect x="1" y="7" width="1" height="1" class="o-k"/><rect x="2" y="7" width="1" height="1" class="o-b"/><rect x="3" y="7" width="10" height="1" class="o-c"/><rect x="13" y="7" width="1" height="1" class="o-b"/><rect x="14" y="7" width="1" height="1" class="o-k"/><rect x="0" y="8" width="2" height="1" class="o-k"/><rect x="2" y="8" width="5" height="1" class="o-c"/><rect x="7" y="8" width="2" height="1" class="o-e"/><rect x="9" y="8" width="5" height="1" class="o-c"/><rect x="14" y="8" width="2" height="1" class="o-k"/><rect x="1" y="9" width="1" height="1" class="o-k"/><rect x="2" y="9" width="12" height="1" class="o-c"/><rect x="14" y="9" width="1" height="1" class="o-k"/><rect x="0" y="10" width="2" height="1" class="o-k"/><rect x="2" y="10" width="5" height="1" class="o-c"/><rect x="7" y="10" width="2" height="1" class="o-k"/><rect x="9" y="10" width="5" height="1" class="o-c"/><rect x="14" y="10" width="2" height="1" class="o-k"/><rect x="1" y="11" width="1" height="1" class="o-k"/><rect x="2" y="11" width="1" height="1" class="o-b"/><rect x="3" y="11" width="10" height="1" class="o-c"/><rect x="13" y="11" width="1" height="1" class="o-b"/><rect x="14" y="11" width="1" height="1" class="o-k"/><rect x="2" y="12" width="1" height="1" class="o-k"/><rect x="3" y="12" width="10" height="1" class="o-b"/><rect x="13" y="12" width="1" height="1" class="o-k"/><rect x="3" y="13" width="10" height="1" class="o-k"/></svg><svg class="wordmark" width="160.0" height="14" viewBox="0 0 80 7" shape-rendering="crispEdges" role="img" aria-label="Otterview Labs"><rect x="1" y="0" width="3" height="1"/><rect x="0" y="1" width="1" height="1"/><rect x="4" y="1" width="1" height="1"/><rect x="0" y="2" width="1" height="1"/><rect x="4" y="2" width="1" height="1"/><rect x="0" y="3" width="1" height="1"/><rect x="4" y="3" width="1" height="1"/><rect x="0" y="4" width="1" height="1"/><rect x="4" y="4" width="1" height="1"/><rect x="0" y="5" width="1" height="1"/><rect x="4" y="5" width="1" height="1"/><rect x="1" y="6" width="3" height="1"/><rect x="6" y="0" width="5" height="1"/><rect x="8" y="1" width="1" height="1"/><rect x="8" y="2" width="1" height="1"/><rect x="8" y="3" width="1" height="1"/><rect x="8" y="4" width="1" height="1"/><rect x="8" y="5" width="1" height="1"/><rect x="8" y="6" width="1" height="1"/><rect x="12" y="0" width="5" height="1"/><rect x="14" y="1" width="1" height="1"/><rect x="14" y="2" width="1" height="1"/><rect x="14" y="3" width="1" height="1"/><rect x="14" y="4" width="1" height="1"/><rect x="14" y="5" width="1" height="1"/><rect x="14" y="6" width="1" height="1"/><rect x="18" y="0" width="5" height="1"/><rect x="18" y="1" width="1" height="1"/><rect x="18" y="2" width="1" height="1"/><rect x="18" y="3" width="4" height="1"/><rect x="18" y="4" width="1" height="1"/><rect x="18" y="5" width="1" height="1"/><rect x="18" y="6" width="5" height="1"/><rect x="24" y="0" width="4" height="1"/><rect x="24" y="1" width="1" height="1"/><rect x="28" y="1" width="1" height="1"/><rect x="24" y="2" width="1" height="1"/><rect x="28" y="2" width="1" height="1"/><rect x="24" y="3" width="4" height="1"/><rect x="24" y="4" width="1" height="1"/><rect x="26" y="4" width="1" height="1"/><rect x="24" y="5" width="1" height="1"/><rect x="27" y="5" width="1" height="1"/><rect x="24" y="6" width="1" height="1"/><rect x="28" y="6" width="1" height="1"/><rect x="30" y="0" width="1" height="1"/><rect x="34" y="0" width="1" height="1"/><rect x="30" y="1" width="1" height="1"/><rect x="34" y="1" width="1" height="1"/><rect x="31" y="2" width="1" height="1"/><rect x="33" y="2" width="1" height="1"/><rect x="31" y="3" width="1" height="1"/><rect x="33" y="3" width="1" height="1"/><rect x="31" y="4" width="1" height="1"/><rect x="33" y="4" width="1" height="1"/><rect x="32" y="5" width="1" height="1"/><rect x="32" y="6" width="1" height="1"/><rect x="37" y="0" width="3" height="1"/><rect x="38" y="1" width="1" height="1"/><rect x="38" y="2" width="1" height="1"/><rect x="38" y="3" width="1" height="1"/><rect x="38" y="4" width="1" height="1"/><rect x="38" y="5" width="1" height="1"/><rect x="37" y="6" width="3" height="1"/><rect x="42" y="0" width="5" height="1"/><rect x="42" y="1" width="1" height="1"/><rect x="42" y="2" width="1" height="1"/><rect x="42" y="3" width="4" height="1"/><rect x="42" y="4" width="1" height="1"/><rect x="42" y="5" width="1" height="1"/><rect x="42" y="6" width="5" height="1"/><rect x="48" y="0" width="1" height="1"/><rect x="52" y="0" width="1" height="1"/><rect x="48" y="1" width="1" height="1"/><rect x="52" y="1" width="1" height="1"/><rect x="48" y="2" width="1" height="1"/><rect x="52" y="2" width="1" height="1"/><rect x="48" y="3" width="1" height="1"/><rect x="50" y="3" width="1" height="1"/><rect x="52" y="3" width="1" height="1"/><rect x="48" y="4" width="1" height="1"/><rect x="50" y="4" width="1" height="1"/><rect x="52" y="4" width="1" height="1"/><rect x="48" y="5" width="2" height="1"/><rect x="51" y="5" width="2" height="1"/><rect x="48" y="6" width="1" height="1"/><rect x="52" y="6" width="1" height="1"/><rect x="57" y="0" width="1" height="1"/><rect x="57" y="1" width="1" height="1"/><rect x="57" y="2" width="1" height="1"/><rect x="57" y="3" width="1" height="1"/><rect x="57" y="4" width="1" height="1"/><rect x="57" y="5" width="1" height="1"/><rect x="57" y="6" width="5" height="1"/><rect x="64" y="0" width="3" height="1"/><rect x="63" y="1" width="1" height="1"/><rect x="67" y="1" width="1" height="1"/><rect x="63" y="2" width="1" height="1"/><rect x="67" y="2" width="1" height="1"/><rect x="63" y="3" width="5" height="1"/><rect x="63" y="4" width="1" height="1"/><rect x="67" y="4" width="1" height="1"/><rect x="63" y="5" width="1" height="1"/><rect x="67" y="5" width="1" height="1"/><rect x="63" y="6" width="1" height="1"/><rect x="67" y="6" width="1" height="1"/><rect x="69" y="0" width="4" height="1"/><rect x="69" y="1" width="1" height="1"/><rect x="73" y="1" width="1" height="1"/><rect x="69" y="2" width="1" height="1"/><rect x="73" y="2" width="1" height="1"/><rect x="69" y="3" width="4" height="1"/><rect x="69" y="4" width="1" height="1"/><rect x="73" y="4" width="1" height="1"/><rect x="69" y="5" width="1" height="1"/><rect x="73" y="5" width="1" height="1"/><rect x="69" y="6" width="4" height="1"/><rect x="76" y="0" width="4" height="1"/><rect x="75" y="1" width="1" height="1"/><rect x="75" y="2" width="1" height="1"/><rect x="76" y="3" width="3" height="1"/><rect x="79" y="4" width="1" height="1"/><rect x="79" y="5" width="1" height="1"/><rect x="75" y="6" width="4" height="1"/></svg></a>
+  <nav>
+    <a href="./#work">分工</a>
+    <a href="./#repos">仓库</a>
+    <a href="./#log">更新</a>
+    <a href="./blog/">文章</a>
+    <a href="https://github.com/otterview-labs">GitHub</a>
+    <a class="lang" href="../" hreflang="en">English</a>
+  </nav>
+</header>
+<section class="intro">
+  <h2>关于</h2>
+  <div class="body">
+    <h1>我们做视觉检索软件，也做跑这些软件的盒子。</h1>
+    <p>Otterview Labs 是个小公司。GitHub 组织是 2026-09-01 建的。</p>
+    <p>主要忙两件事。一是查监控：找出你要的人、车或者事件，然后让人复核一遍。二是硬件。我们希望这套检索能跑在工厂、园区或展厅里的一个小盒子上，而且一年后还在跑。</p>
+    <p>目前有 4 个公开仓库。盒子还是样机，暂时没照片。</p>
+  </div>
+</section>
+
+<section id="work">
+  <h2>分工</h2>
+  <div class="body">
+    <p>有次我们把公司画成了一个机器人，后来就一直这么用了。</p>
+    <div class="work">
+      <figure class="person-fig">
+        <svg class="person" viewBox="0 0 30 44" shape-rendering="crispEdges" role="img" aria-label="像素机器人：大脑是 agent，心脏是训练平台，双手是机械臂，左腿是视觉，右腿是硬件。"><g><rect x="2" y="43" width="26" height="1" class="px-l"/></g><g class="part" data-part="arms"><rect x="26" y="6" width="1" height="1" class="px-k"/><rect x="29" y="6" width="1" height="1" class="px-k"/><rect x="26" y="7" width="1" height="1" class="px-k"/><rect x="29" y="7" width="1" height="1" class="px-k"/><rect x="26" y="8" width="1" height="1" class="px-k"/><rect x="29" y="8" width="1" height="1" class="px-k"/><rect x="27" y="9" width="2" height="1" class="px-S"/><rect x="27" y="10" width="2" height="1" class="px-s"/><rect x="27" y="11" width="2" height="1" class="px-s"/><rect x="27" y="12" width="2" height="1" class="px-s"/><rect x="27" y="13" width="2" height="1" class="px-s"/><rect x="27" y="14" width="2" height="1" class="px-S"/><rect x="27" y="15" width="2" height="1" class="px-S"/><rect x="27" y="16" width="2" height="1" class="px-s"/><rect x="26" y="17" width="2" height="1" class="px-s"/><rect x="25" y="18" width="2" height="1" class="px-s"/><rect x="4" y="19" width="2" height="1" class="px-S"/><rect x="24" y="19" width="2" height="1" class="px-S"/><rect x="4" y="20" width="2" height="1" class="px-S"/><rect x="24" y="20" width="2" height="1" class="px-S"/><rect x="3" y="21" width="2" height="1" class="px-s"/><rect x="3" y="22" width="2" height="1" class="px-s"/><rect x="3" y="23" width="2" height="1" class="px-s"/><rect x="3" y="24" width="2" height="1" class="px-s"/><rect x="2" y="25" width="2" height="1" class="px-S"/><rect x="2" y="26" width="2" height="1" class="px-S"/><rect x="2" y="27" width="2" height="1" class="px-s"/><rect x="2" y="28" width="2" height="1" class="px-s"/><rect x="2" y="29" width="2" height="1" class="px-s"/><rect x="2" y="30" width="2" height="1" class="px-S"/><rect x="1" y="31" width="1" height="1" class="px-k"/><rect x="4" y="31" width="1" height="1" class="px-k"/><rect x="1" y="32" width="1" height="1" class="px-k"/><rect x="4" y="32" width="1" height="1" class="px-k"/><rect x="1" y="33" width="1" height="1" class="px-k"/><rect x="4" y="33" width="1" height="1" class="px-k"/></g><g class="part" data-part="vision"><rect x="8" y="31" width="1" height="1" class="px-k"/><rect x="9" y="31" width="4" height="1" class="px-g"/><rect x="13" y="31" width="1" height="1" class="px-k"/><rect x="8" y="32" width="1" height="1" class="px-k"/><rect x="9" y="32" width="1" height="1" class="px-g"/><rect x="10" y="32" width="1" height="1" class="px-w"/><rect x="11" y="32" width="1" height="1" class="px-k"/><rect x="12" y="32" width="1" height="1" class="px-g"/><rect x="13" y="32" width="1" height="1" class="px-k"/><rect x="8" y="33" width="1" height="1" class="px-k"/><rect x="9" y="33" width="1" height="1" class="px-g"/><rect x="10" y="33" width="2" height="1" class="px-k"/><rect x="12" y="33" width="1" height="1" class="px-g"/><rect x="13" y="33" width="1" height="1" class="px-k"/><rect x="8" y="34" width="1" height="1" class="px-k"/><rect x="9" y="34" width="4" height="1" class="px-g"/><rect x="13" y="34" width="1" height="1" class="px-k"/><rect x="8" y="35" width="1" height="1" class="px-k"/><rect x="9" y="35" width="4" height="1" class="px-g"/><rect x="13" y="35" width="1" height="1" class="px-k"/><rect x="8" y="36" width="1" height="1" class="px-k"/><rect x="9" y="36" width="4" height="1" class="px-G"/><rect x="13" y="36" width="1" height="1" class="px-k"/><rect x="8" y="37" width="1" height="1" class="px-k"/><rect x="9" y="37" width="4" height="1" class="px-g"/><rect x="13" y="37" width="1" height="1" class="px-k"/><rect x="8" y="38" width="1" height="1" class="px-k"/><rect x="9" y="38" width="4" height="1" class="px-G"/><rect x="13" y="38" width="1" height="1" class="px-k"/><rect x="8" y="39" width="1" height="1" class="px-k"/><rect x="9" y="39" width="4" height="1" class="px-g"/><rect x="13" y="39" width="1" height="1" class="px-k"/><rect x="6" y="40" width="8" height="1" class="px-k"/><rect x="6" y="41" width="1" height="1" class="px-k"/><rect x="7" y="41" width="6" height="1" class="px-p"/><rect x="13" y="41" width="1" height="1" class="px-k"/><rect x="6" y="42" width="8" height="1" class="px-k"/></g><g class="part" data-part="hardware"><rect x="16" y="31" width="1" height="1" class="px-k"/><rect x="17" y="31" width="4" height="1" class="px-a"/><rect x="21" y="31" width="1" height="1" class="px-k"/><rect x="16" y="32" width="1" height="1" class="px-k"/><rect x="17" y="32" width="4" height="1" class="px-A"/><rect x="21" y="32" width="1" height="1" class="px-k"/><rect x="16" y="33" width="1" height="1" class="px-k"/><rect x="17" y="33" width="4" height="1" class="px-a"/><rect x="21" y="33" width="1" height="1" class="px-k"/><rect x="16" y="34" width="1" height="1" class="px-k"/><rect x="17" y="34" width="4" height="1" class="px-A"/><rect x="21" y="34" width="1" height="1" class="px-k"/><rect x="16" y="35" width="1" height="1" class="px-k"/><rect x="17" y="35" width="4" height="1" class="px-a"/><rect x="21" y="35" width="1" height="1" class="px-k"/><rect x="16" y="36" width="1" height="1" class="px-k"/><rect x="17" y="36" width="4" height="1" class="px-a"/><rect x="21" y="36" width="1" height="1" class="px-k"/><rect x="16" y="37" width="1" height="1" class="px-k"/><rect x="17" y="37" width="2" height="1" class="px-a"/><rect x="19" y="37" width="1" height="1" class="px-r blink2"/><rect x="20" y="37" width="1" height="1" class="px-a"/><rect x="21" y="37" width="1" height="1" class="px-k"/><rect x="16" y="38" width="1" height="1" class="px-k"/><rect x="17" y="38" width="4" height="1" class="px-a"/><rect x="21" y="38" width="1" height="1" class="px-k"/><rect x="16" y="39" width="1" height="1" class="px-k"/><rect x="17" y="39" width="4" height="1" class="px-a"/><rect x="21" y="39" width="1" height="1" class="px-k"/><rect x="16" y="40" width="8" height="1" class="px-k"/><rect x="16" y="41" width="1" height="1" class="px-k"/><rect x="17" y="41" width="6" height="1" class="px-p"/><rect x="23" y="41" width="1" height="1" class="px-k"/><rect x="16" y="42" width="8" height="1" class="px-k"/></g><g class="part" data-part="heart"><rect x="6" y="18" width="18" height="1" class="px-k"/><rect x="6" y="19" width="1" height="1" class="px-k"/><rect x="7" y="19" width="16" height="1" class="px-p"/><rect x="23" y="19" width="1" height="1" class="px-k"/><rect x="6" y="20" width="1" height="1" class="px-k"/><rect x="7" y="20" width="5" height="1" class="px-p"/><rect x="12" y="20" width="2" height="1" class="px-r beat"/><rect x="14" y="20" width="2" height="1" class="px-p"/><rect x="16" y="20" width="2" height="1" class="px-r beat"/><rect x="18" y="20" width="5" height="1" class="px-p"/><rect x="23" y="20" width="1" height="1" class="px-k"/><rect x="6" y="21" width="1" height="1" class="px-k"/><rect x="7" y="21" width="4" height="1" class="px-p"/><rect x="11" y="21" width="1" height="1" class="px-r beat"/><rect x="12" y="21" width="1" height="1" class="px-R beat"/><rect x="13" y="21" width="6" height="1" class="px-r beat"/><rect x="19" y="21" width="4" height="1" class="px-p"/><rect x="23" y="21" width="1" height="1" class="px-k"/><rect x="6" y="22" width="1" height="1" class="px-k"/><rect x="7" y="22" width="4" height="1" class="px-p"/><rect x="11" y="22" width="8" height="1" class="px-r beat"/><rect x="19" y="22" width="4" height="1" class="px-p"/><rect x="23" y="22" width="1" height="1" class="px-k"/><rect x="6" y="23" width="1" height="1" class="px-k"/><rect x="7" y="23" width="5" height="1" class="px-p"/><rect x="12" y="23" width="6" height="1" class="px-r beat"/><rect x="18" y="23" width="5" height="1" class="px-p"/><rect x="23" y="23" width="1" height="1" class="px-k"/><rect x="6" y="24" width="1" height="1" class="px-k"/><rect x="7" y="24" width="6" height="1" class="px-p"/><rect x="13" y="24" width="4" height="1" class="px-r beat"/><rect x="17" y="24" width="6" height="1" class="px-p"/><rect x="23" y="24" width="1" height="1" class="px-k"/><rect x="6" y="25" width="1" height="1" class="px-k"/><rect x="7" y="25" width="7" height="1" class="px-p"/><rect x="14" y="25" width="2" height="1" class="px-r beat"/><rect x="16" y="25" width="7" height="1" class="px-p"/><rect x="23" y="25" width="1" height="1" class="px-k"/><rect x="6" y="26" width="1" height="1" class="px-k"/><rect x="7" y="26" width="16" height="1" class="px-p"/><rect x="23" y="26" width="1" height="1" class="px-k"/><rect x="6" y="27" width="1" height="1" class="px-k"/><rect x="7" y="27" width="2" height="1" class="px-p"/><rect x="9" y="27" width="6" height="1" class="px-g"/><rect x="15" y="27" width="6" height="1" class="px-G load"/><rect x="21" y="27" width="2" height="1" class="px-p"/><rect x="23" y="27" width="1" height="1" class="px-k"/><rect x="6" y="28" width="1" height="1" class="px-k"/><rect x="7" y="28" width="16" height="1" class="px-p"/><rect x="23" y="28" width="1" height="1" class="px-k"/><rect x="6" y="29" width="1" height="1" class="px-k"/><rect x="7" y="29" width="16" height="1" class="px-p"/><rect x="23" y="29" width="1" height="1" class="px-k"/><rect x="6" y="30" width="18" height="1" class="px-k"/></g><g class="part" data-part="brain"><rect x="14" y="0" width="2" height="1" class="px-r blink"/><rect x="14" y="1" width="2" height="1" class="px-k"/><rect x="14" y="2" width="2" height="1" class="px-k"/><rect x="7" y="3" width="16" height="1" class="px-k"/><rect x="7" y="4" width="1" height="1" class="px-k"/><rect x="8" y="4" width="14" height="1" class="px-p"/><rect x="22" y="4" width="1" height="1" class="px-k"/><rect x="7" y="5" width="1" height="1" class="px-k"/><rect x="8" y="5" width="1" height="1" class="px-p"/><rect x="9" y="5" width="12" height="1" class="px-k"/><rect x="21" y="5" width="1" height="1" class="px-p"/><rect x="22" y="5" width="1" height="1" class="px-k"/><rect x="7" y="6" width="1" height="1" class="px-k"/><rect x="8" y="6" width="1" height="1" class="px-p"/><rect x="9" y="6" width="1" height="1" class="px-k"/><rect x="10" y="6" width="1" height="1" class="px-g"/><rect x="11" y="6" width="1" height="1" class="px-G twinkle"/><rect x="12" y="6" width="6" height="1" class="px-g"/><rect x="18" y="6" width="1" height="1" class="px-G twinkle"/><rect x="19" y="6" width="1" height="1" class="px-g"/><rect x="20" y="6" width="1" height="1" class="px-k"/><rect x="21" y="6" width="1" height="1" class="px-p"/><rect x="22" y="6" width="1" height="1" class="px-k"/><rect x="7" y="7" width="1" height="1" class="px-k"/><rect x="8" y="7" width="1" height="1" class="px-p"/><rect x="9" y="7" width="1" height="1" class="px-k"/><rect x="10" y="7" width="3" height="1" class="px-g"/><rect x="13" y="7" width="1" height="1" class="px-G twinkle"/><rect x="14" y="7" width="3" height="1" class="px-g"/><rect x="17" y="7" width="1" height="1" class="px-G twinkle"/><rect x="18" y="7" width="2" height="1" class="px-g"/><rect x="20" y="7" width="1" height="1" class="px-k"/><rect x="21" y="7" width="1" height="1" class="px-p"/><rect x="22" y="7" width="1" height="1" class="px-k"/><rect x="7" y="8" width="1" height="1" class="px-k"/><rect x="8" y="8" width="1" height="1" class="px-p"/><rect x="9" y="8" width="1" height="1" class="px-k"/><rect x="10" y="8" width="1" height="1" class="px-g"/><rect x="11" y="8" width="1" height="1" class="px-G twinkle"/><rect x="12" y="8" width="2" height="1" class="px-g"/><rect x="14" y="8" width="1" height="1" class="px-G twinkle"/><rect x="15" y="8" width="4" height="1" class="px-g"/><rect x="19" y="8" width="1" height="1" class="px-G twinkle"/><rect x="20" y="8" width="1" height="1" class="px-k"/><rect x="21" y="8" width="1" height="1" class="px-p"/><rect x="22" y="8" width="1" height="1" class="px-k"/><rect x="7" y="9" width="1" height="1" class="px-k"/><rect x="8" y="9" width="1" height="1" class="px-p"/><rect x="9" y="9" width="12" height="1" class="px-k"/><rect x="21" y="9" width="1" height="1" class="px-p"/><rect x="22" y="9" width="1" height="1" class="px-k"/><rect x="7" y="10" width="1" height="1" class="px-k"/><rect x="8" y="10" width="14" height="1" class="px-p"/><rect x="22" y="10" width="1" height="1" class="px-k"/><rect x="6" y="11" width="1" height="1" class="px-S"/><rect x="7" y="11" width="1" height="1" class="px-k"/><rect x="8" y="11" width="2" height="1" class="px-p"/><rect x="10" y="11" width="2" height="1" class="px-k"/><rect x="12" y="11" width="6" height="1" class="px-p"/><rect x="18" y="11" width="2" height="1" class="px-k"/><rect x="20" y="11" width="2" height="1" class="px-p"/><rect x="22" y="11" width="1" height="1" class="px-k"/><rect x="23" y="11" width="1" height="1" class="px-S"/><rect x="6" y="12" width="1" height="1" class="px-S"/><rect x="7" y="12" width="1" height="1" class="px-k"/><rect x="8" y="12" width="2" height="1" class="px-p"/><rect x="10" y="12" width="2" height="1" class="px-k"/><rect x="12" y="12" width="6" height="1" class="px-p"/><rect x="18" y="12" width="2" height="1" class="px-k"/><rect x="20" y="12" width="2" height="1" class="px-p"/><rect x="22" y="12" width="1" height="1" class="px-k"/><rect x="23" y="12" width="1" height="1" class="px-S"/><rect x="7" y="13" width="1" height="1" class="px-k"/><rect x="8" y="13" width="14" height="1" class="px-p"/><rect x="22" y="13" width="1" height="1" class="px-k"/><rect x="7" y="14" width="1" height="1" class="px-k"/><rect x="8" y="14" width="5" height="1" class="px-p"/><rect x="13" y="14" width="4" height="1" class="px-k"/><rect x="17" y="14" width="5" height="1" class="px-p"/><rect x="22" y="14" width="1" height="1" class="px-k"/><rect x="7" y="15" width="1" height="1" class="px-k"/><rect x="8" y="15" width="14" height="1" class="px-p"/><rect x="22" y="15" width="1" height="1" class="px-k"/><rect x="7" y="16" width="16" height="1" class="px-k"/><rect x="13" y="17" width="1" height="1" class="px-k"/><rect x="14" y="17" width="2" height="1" class="px-p"/><rect x="16" y="17" width="1" height="1" class="px-k"/></g></svg>
+        <figcaption>图 1</figcaption>
+      </figure>
+      <dl class="def">
+        <div data-part="brain"><dt>大脑<small>Agent</small></dt><dd><span class="tag t-open">已开源</span>agentBridge。我们每天用它管 Codex 和 Claude Code 的会话，所以开源了。它不会自己判定任务完成，得人来定。</dd></div>
+        <div data-part="heart"><dt>心脏<small>训练平台</small></dt><dd><span class="tag t-in">内部</span>还没公开。数据清洗、标注、训练和评测都在这。</dd></div>
+        <div data-part="arms"><dt>双手<small>机械臂</small></dt><dd><span class="tag t-todo">未开始</span>还没有。</dd></div>
+        <div data-part="vision"><dt>左腿<small>视觉</small></dt><dd><span class="tag t-open">已开源</span>SightIndex。给它图片、视频或 RTSP 流，就能按人、脸或画面内容搜。跨摄像头找人的结果只是候选，还得有人看一眼。</dd></div>
+        <div data-part="hardware"><dt>右腿<small>硬件</small></dt><dd><span class="tag t-proto">样机</span>边缘盒。它的视频管线 LutraPipe 能在高通 Q900 上同时解 31 路 RTSP。</dd></div>
+      </dl>
+    </div>
+  </div>
+</section>
+
+<section id="repos">
+  <h2>仓库</h2>
+  <div class="body">
+    <ul class="repos">
+      <li>
+        <div class="repo-head"><a href="https://github.com/otterview-labs/agentbridge">agentBridge</a><span class="tag t-open">可用</span><span class="meta">TypeScript · Apache-2.0</span></div>
+        <p>AI 编程会话的控制台。会话跑在本机的 tmux 里，状态存 SQLite。有网页端、CLI、Android 应用和飞书机器人。</p>
+      </li>
+      <li>
+        <div class="repo-head"><a href="https://github.com/otterview-labs/SightIndex">SightIndex</a><span class="tag t-proto">实验</span><span class="meta">Python · FastAPI · Vue</span></div>
+        <p>自部署的视觉检索。元数据用 Postgres 或 SQLite。Milvus 和 ReID 服务可选。</p>
+      </li>
+      <li>
+        <div class="repo-head"><a href="https://github.com/otterview-labs/LutraPipe">LutraPipe</a><span class="tag t-proto">演示</span><span class="meta">C# · .NET 10 · GStreamer</span></div>
+        <p>边缘盒的视频管线。它会统计每一路解码了多少帧，画面没动就跳过预览 JPEG。</p>
+      </li>
+      <li>
+        <div class="repo-head"><a href="https://github.com/otterview-labs/chatbi">ChatBI</a><span class="tag t-todo">原型</span><span class="meta">FastAPI · Vue</span></div>
+        <p>用中文问业务数据库问题。支持多个数据源，可以定时发报表。</p>
+      </li>
+    </ul>
+    <p class="fine">以各仓库的许可文件为准。SightIndex 的人脸识别和找人会处理生物特征数据。上线前先把授权、权限控制和保留期限理清楚。</p>
+
+    <figure class="win">
+      <div class="win-bar"><i></i><i></i><i></i><span>agentbridge · /studio · 2026-09-20</span></div>
+      <img src="../assets/agentbridge-studio.jpg" width="1360" height="1056" loading="lazy" alt="agentBridge 工作室页面，左边是今天的会话，右边是在线机器">
+    </figure>
+    <p class="fine cap">agentBridge 的工作室页面。左边是会话，右边是机器。</p>
+  </div>
+</section>
+
+<section id="hardware">
+  <h2>硬件</h2>
+  <div class="body">
+    <p>真正在做的是<strong>边缘视觉盒</strong>。接几个摄像头，解码和推理都在盒子里跑，结果留在局域网。用的是高通 Q900。</p>
+    <p>其他的还停在纸上。带屏幕和麦克风的终端；给别的设备厂商用的视觉和语音模块；巡检用的记录仪。先做哪个，看谁真来提需求。</p>
+    <p>暂时不做机器人。</p>
+  </div>
+</section>
+
+<section id="log">
+  <h2>更新</h2>
+  <div class="body">
+    <ul class="dated">
+      <li><time datetime="2026-09-26">09-26</time><span>Android 版 agentBridge：SSH 现在能绕过 VPN，删掉的员工可以恢复，工作室能写任务计划了。</span></li>
+      <li><time datetime="2026-09-24">09-24</time><span>LutraPipe 第一次发布。</span></li>
+      <li><time datetime="2026-09-15">09-15</time><span>SightIndex 加了语义搜索、上传大小限制和容器部署脚本。</span></li>
+      <li><time datetime="2026-09-09">09-09</time><span>ChatBI 公开。</span></li>
+      <li><time datetime="2026-09-06">09-06</time><span>SightIndex 的跨摄像头找人加了人脸安全规则。</span></li>
+      <li><time datetime="2026-09-04">09-04</time><span>SightIndex 公开，带中文文档。</span></li>
+      <li><time datetime="2026-09-02">09-02</time><span>agentBridge 公开。</span></li>
+      <li><time datetime="2026-09-01">09-01</time><span>建了 GitHub 组织。</span></li>
+    </ul>
+    <p class="fine">都是 2026 年的事。</p>
+  </div>
+</section>
+
+<section id="writing">
+  <h2>文章</h2>
+  <div class="body">
+    <ul class="dated">
+      <li><time datetime="2026-09-26">09-26</time><a href="blog/self-hosted-first.html">为什么先做自部署</a></li>
+      <li><time datetime="2026-09-26">09-26</time><a href="blog/agentbridge-session-management.html">CLI 会话都放一个地方</a></li>
+      <li><time datetime="2026-09-26">09-26</time><a href="blog/sightindex-local-search.html">本地视觉检索从哪开始</a></li>
+    </ul>
+  </div>
+</section>
+
+<section id="rules">
+  <h2>规矩</h2>
+  <div class="body">
+    <ul class="squares">
+      <li>能在本地跑的，就在本地跑。</li>
+      <li>不绑死一家模型。</li>
+      <li>哪里不行，README 里会写。</li>
+      <li>人脸识别和找人需要授权，也要有人复核。</li>
+    </ul>
+  </div>
+</section>
+
+<section id="contact">
+  <h2>联系</h2>
+  <div class="body">
+    <p>去对应仓库提 Issue。我们都会看。</p>
+  </div>
+</section>
+<footer class="foot">
+  <span class="foot-otter"><svg class="otter " width="20" height="20" viewBox="0 0 16 16" shape-rendering="crispEdges" aria-hidden="true"><rect x="3" y="2" width="2" height="1" class="o-k"/><rect x="11" y="2" width="2" height="1" class="o-k"/><rect x="2" y="3" width="1" height="1" class="o-k"/><rect x="3" y="3" width="2" height="1" class="o-b"/><rect x="5" y="3" width="6" height="1" class="o-k"/><rect x="11" y="3" width="2" height="1" class="o-b"/><rect x="13" y="3" width="1" height="1" class="o-k"/><rect x="1" y="4" width="1" height="1" class="o-k"/><rect x="2" y="4" width="12" height="1" class="o-b"/><rect x="14" y="4" width="1" height="1" class="o-k"/><rect x="1" y="5" width="1" height="1" class="o-k"/><rect x="2" y="5" width="2" height="1" class="o-b"/><rect x="4" y="5" width="1" height="1" class="o-w"/><rect x="5" y="5" width="1" height="1" class="o-e"/><rect x="6" y="5" width="4" height="1" class="o-b"/><rect x="10" y="5" width="1" height="1" class="o-w"/><rect x="11" y="5" width="1" height="1" class="o-e"/><rect x="12" y="5" width="2" height="1" class="o-b"/><rect x="14" y="5" width="1" height="1" class="o-k"/><rect x="1" y="6" width="1" height="1" class="o-k"/><rect x="2" y="6" width="2" height="1" class="o-b"/><rect x="4" y="6" width="2" height="1" class="o-e"/><rect x="6" y="6" width="4" height="1" class="o-b"/><rect x="10" y="6" width="2" height="1" class="o-e"/><rect x="12" y="6" width="2" height="1" class="o-b"/><rect x="14" y="6" width="1" height="1" class="o-k"/><rect x="1" y="7" width="1" height="1" class="o-k"/><rect x="2" y="7" width="1" height="1" class="o-b"/><rect x="3" y="7" width="10" height="1" class="o-c"/><rect x="13" y="7" width="1" height="1" class="o-b"/><rect x="14" y="7" width="1" height="1" class="o-k"/><rect x="0" y="8" width="2" height="1" class="o-k"/><rect x="2" y="8" width="5" height="1" class="o-c"/><rect x="7" y="8" width="2" height="1" class="o-e"/><rect x="9" y="8" width="5" height="1" class="o-c"/><rect x="14" y="8" width="2" height="1" class="o-k"/><rect x="1" y="9" width="1" height="1" class="o-k"/><rect x="2" y="9" width="12" height="1" class="o-c"/><rect x="14" y="9" width="1" height="1" class="o-k"/><rect x="0" y="10" width="2" height="1" class="o-k"/><rect x="2" y="10" width="5" height="1" class="o-c"/><rect x="7" y="10" width="2" height="1" class="o-k"/><rect x="9" y="10" width="5" height="1" class="o-c"/><rect x="14" y="10" width="2" height="1" class="o-k"/><rect x="1" y="11" width="1" height="1" class="o-k"/><rect x="2" y="11" width="1" height="1" class="o-b"/><rect x="3" y="11" width="10" height="1" class="o-c"/><rect x="13" y="11" width="1" height="1" class="o-b"/><rect x="14" y="11" width="1" height="1" class="o-k"/><rect x="2" y="12" width="1" height="1" class="o-k"/><rect x="3" y="12" width="10" height="1" class="o-b"/><rect x="13" y="12" width="1" height="1" class="o-k"/><rect x="3" y="13" width="10" height="1" class="o-k"/></svg>© 2026 Otterview Labs</span>
+  <span>最后更新 2026-09-27</span>
+</footer>
+
+</div>
+<script>
+document.querySelectorAll('a.lang').forEach(function (a) {
+  a.addEventListener('click', function () {
+    try { localStorage.setItem('ov-lang', a.getAttribute('hreflang') === 'en' ? 'en' : 'zh'); } catch (e) {}
+  });
+});
+(function () {
+  var fig = document.querySelector('.person');
+  if (!fig) return;
+  var nodes = document.querySelectorAll('[data-part]');
+  function set(part) {
+    fig.classList.toggle('has-hot', !!part);
+    nodes.forEach(function (n) { n.classList.toggle('is-hot', !!part && n.getAttribute('data-part') === part); });
+  }
+  nodes.forEach(function (n) {
+    var p = n.getAttribute('data-part');
+    n.addEventListener('mouseenter', function () { set(p); });
+    n.addEventListener('mouseleave', function () { set(null); });
+  });
+})();
+</script>
+</body>
+</html>
