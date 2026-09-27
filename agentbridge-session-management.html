@@ -1,1 +1,101 @@
-<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="agentBridge 如何管理多个 CLI 编程会话。"><title>把多个 CLI 会话放到同一处 — Otterview Labs</title><link rel="stylesheet" href="/styles.css"></head><body><header class="site-header"><a class="brand" href="/">OTTERVIEW <span>LABS</span></a><nav class="nav" aria-label="主导航"><a href="/#projects">项目</a><a href="/blog/">技术博客</a><a class="nav-github" href="https://github.com/otterview-labs">GitHub ↗</a></nav></header><main class="container article-wrap"><div class="post-meta">2026.09.26 · agentBridge</div><h1>把多个 CLI 会话放到同一处</h1><p class="article-lede">当 Codex、Claude Code 和 Gemini CLI 同时出现在工作流里，真正麻烦的往往不是启动它们，而是记住它们各自跑到了哪里。</p><article class="article"><p>我们把 agentBridge 做成一个很小的会话入口：本机的会话和远程机器上的会话，都可以从同一个界面查看。</p><h2>会话本身就是上下文</h2><p>一个编程任务很少只发生在一个终端里。仓库、分支、模型、最近一次输出和正在等待的命令，拼在一起才是完整的上下文。</p><p>如果这些信息散落在窗口、终端标签和远程连接里，切换本身就会变成工作。agentBridge 先把这些上下文放回一个列表里，让人能快速回到正确的位置。</p><h2>本机优先，远程可见</h2><p>默认情况下，会话仍然在自己的机器上运行。远程查看是为了减少切换，不是为了把代码和凭据搬到第三方服务中。</p><p>这也决定了项目的取舍：先把启动、查看和恢复做顺，再逐步补上搜索、标签和更细的状态管理。</p></article></main><footer class="site-footer"><div class="container site-footer-inner"><span>© 2026 Otterview Labs</span><span><a href="/blog/">← 返回技术博客</a></span></div></footer></body></html>
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CLI 会话都放一个地方 · Otterview Labs</title>
+<meta name="description" content="我们写 agentBridge 的原因。">
+<meta name="color-scheme" content="light dark">
+<meta property="og:site_name" content="Otterview Labs">
+<meta property="og:title" content="CLI 会话都放一个地方 · Otterview Labs">
+<meta property="og:description" content="我们写 agentBridge 的原因。">
+<meta property="og:image" content="https://otterview.ai/assets/art/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta property="og:url" content="https://otterview.ai/zh/blog/agentbridge-session-management.html">
+<meta property="og:locale" content="zh_CN">
+<link rel="canonical" href="https://otterview.ai/zh/blog/agentbridge-session-management.html">
+<link rel="alternate" hreflang="en" href="https://otterview.ai/blog/agentbridge-session-management.html">
+<link rel="alternate" hreflang="zh-CN" href="https://otterview.ai/zh/blog/agentbridge-session-management.html">
+<link rel="alternate" hreflang="x-default" href="https://otterview.ai/blog/agentbridge-session-management.html">
+<script>
+/* Language: a saved choice wins; otherwise Chinese browsers landing on English go to Chinese once. */
+(function () {
+  try {
+    var here = 'zh', other = '../../blog/agentbridge-session-management.html', saved = localStorage.getItem('ov-lang');
+    if (saved) { if (saved !== here) location.replace(other + location.hash); return; }
+    if (here === 'en') {
+      var langs = (navigator.languages || [navigator.language || '']).join(',').toLowerCase();
+      if (/(^|,)zh/.test(langs)) location.replace(other + location.hash);
+    }
+  } catch (e) {}
+})();
+</script>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' shape-rendering='crispEdges'%3E%3Crect x='3' y='2' width='2' height='1' fill='%234a3222'/%3E%3Crect x='11' y='2' width='2' height='1' fill='%234a3222'/%3E%3Crect x='2' y='3' width='1' height='1' fill='%234a3222'/%3E%3Crect x='3' y='3' width='2' height='1' fill='%238b5e3c'/%3E%3Crect x='5' y='3' width='6' height='1' fill='%234a3222'/%3E%3Crect x='11' y='3' width='2' height='1' fill='%238b5e3c'/%3E%3Crect x='13' y='3' width='1' height='1' fill='%234a3222'/%3E%3Crect x='1' y='4' width='1' height='1' fill='%234a3222'/%3E%3Crect x='2' y='4' width='12' height='1' fill='%238b5e3c'/%3E%3Crect x='14' y='4' width='1' height='1' fill='%234a3222'/%3E%3Crect x='1' y='5' width='1' height='1' fill='%234a3222'/%3E%3Crect x='2' y='5' width='2' height='1' fill='%238b5e3c'/%3E%3Crect x='4' y='5' width='1' height='1' fill='%23ffffff'/%3E%3Crect x='5' y='5' width='1' height='1' fill='%232a2824'/%3E%3Crect x='6' y='5' width='4' height='1' fill='%238b5e3c'/%3E%3Crect x='10' y='5' width='1' height='1' fill='%23ffffff'/%3E%3Crect x='11' y='5' width='1' height='1' fill='%232a2824'/%3E%3Crect x='12' y='5' width='2' height='1' fill='%238b5e3c'/%3E%3Crect x='14' y='5' width='1' height='1' fill='%234a3222'/%3E%3Crect x='1' y='6' width='1' height='1' fill='%234a3222'/%3E%3Crect x='2' y='6' width='2' height='1' fill='%238b5e3c'/%3E%3Crect x='4' y='6' width='2' height='1' fill='%232a2824'/%3E%3Crect x='6' y='6' width='4' height='1' fill='%238b5e3c'/%3E%3Crect x='10' y='6' width='2' height='1' fill='%232a2824'/%3E%3Crect x='12' y='6' width='2' height='1' fill='%238b5e3c'/%3E%3Crect x='14' y='6' width='1' height='1' fill='%234a3222'/%3E%3Crect x='1' y='7' width='1' height='1' fill='%234a3222'/%3E%3Crect x='2' y='7' width='1' height='1' fill='%238b5e3c'/%3E%3Crect x='3' y='7' width='10' height='1' fill='%23ecd9b6'/%3E%3Crect x='13' y='7' width='1' height='1' fill='%238b5e3c'/%3E%3Crect x='14' y='7' width='1' height='1' fill='%234a3222'/%3E%3Crect x='0' y='8' width='2' height='1' fill='%234a3222'/%3E%3Crect x='2' y='8' width='5' height='1' fill='%23ecd9b6'/%3E%3Crect x='7' y='8' width='2' height='1' fill='%232a2824'/%3E%3Crect x='9' y='8' width='5' height='1' fill='%23ecd9b6'/%3E%3Crect x='14' y='8' width='2' height='1' fill='%234a3222'/%3E%3Crect x='1' y='9' width='1' height='1' fill='%234a3222'/%3E%3Crect x='2' y='9' width='12' height='1' fill='%23ecd9b6'/%3E%3Crect x='14' y='9' width='1' height='1' fill='%234a3222'/%3E%3Crect x='0' y='10' width='2' height='1' fill='%234a3222'/%3E%3Crect x='2' y='10' width='5' height='1' fill='%23ecd9b6'/%3E%3Crect x='7' y='10' width='2' height='1' fill='%234a3222'/%3E%3Crect x='9' y='10' width='5' height='1' fill='%23ecd9b6'/%3E%3Crect x='14' y='10' width='2' height='1' fill='%234a3222'/%3E%3Crect x='1' y='11' width='1' height='1' fill='%234a3222'/%3E%3Crect x='2' y='11' width='1' height='1' fill='%238b5e3c'/%3E%3Crect x='3' y='11' width='10' height='1' fill='%23ecd9b6'/%3E%3Crect x='13' y='11' width='1' height='1' fill='%238b5e3c'/%3E%3Crect x='14' y='11' width='1' height='1' fill='%234a3222'/%3E%3Crect x='2' y='12' width='1' height='1' fill='%234a3222'/%3E%3Crect x='3' y='12' width='10' height='1' fill='%238b5e3c'/%3E%3Crect x='13' y='12' width='1' height='1' fill='%234a3222'/%3E%3Crect x='3' y='13' width='10' height='1' fill='%234a3222'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="../../site.css">
+</head>
+<body>
+<div class="page">
+
+<header class="top">
+  <a class="brand" href="../" aria-label="Otterview Labs"><svg class="otter " width="32" height="32" viewBox="0 0 16 16" shape-rendering="crispEdges" aria-hidden="true"><rect x="3" y="2" width="2" height="1" class="o-k"/><rect x="11" y="2" width="2" height="1" class="o-k"/><rect x="2" y="3" width="1" height="1" class="o-k"/><rect x="3" y="3" width="2" height="1" class="o-b"/><rect x="5" y="3" width="6" height="1" class="o-k"/><rect x="11" y="3" width="2" height="1" class="o-b"/><rect x="13" y="3" width="1" height="1" class="o-k"/><rect x="1" y="4" width="1" height="1" class="o-k"/><rect x="2" y="4" width="12" height="1" class="o-b"/><rect x="14" y="4" width="1" height="1" class="o-k"/><rect x="1" y="5" width="1" height="1" class="o-k"/><rect x="2" y="5" width="2" height="1" class="o-b"/><rect x="4" y="5" width="1" height="1" class="o-w"/><rect x="5" y="5" width="1" height="1" class="o-e"/><rect x="6" y="5" width="4" height="1" class="o-b"/><rect x="10" y="5" width="1" height="1" class="o-w"/><rect x="11" y="5" width="1" height="1" class="o-e"/><rect x="12" y="5" width="2" height="1" class="o-b"/><rect x="14" y="5" width="1" height="1" class="o-k"/><rect x="1" y="6" width="1" height="1" class="o-k"/><rect x="2" y="6" width="2" height="1" class="o-b"/><rect x="4" y="6" width="2" height="1" class="o-e"/><rect x="6" y="6" width="4" height="1" class="o-b"/><rect x="10" y="6" width="2" height="1" class="o-e"/><rect x="12" y="6" width="2" height="1" class="o-b"/><rect x="14" y="6" width="1" height="1" class="o-k"/><rect x="1" y="7" width="1" height="1" class="o-k"/><rect x="2" y="7" width="1" height="1" class="o-b"/><rect x="3" y="7" width="10" height="1" class="o-c"/><rect x="13" y="7" width="1" height="1" class="o-b"/><rect x="14" y="7" width="1" height="1" class="o-k"/><rect x="0" y="8" width="2" height="1" class="o-k"/><rect x="2" y="8" width="5" height="1" class="o-c"/><rect x="7" y="8" width="2" height="1" class="o-e"/><rect x="9" y="8" width="5" height="1" class="o-c"/><rect x="14" y="8" width="2" height="1" class="o-k"/><rect x="1" y="9" width="1" height="1" class="o-k"/><rect x="2" y="9" width="12" height="1" class="o-c"/><rect x="14" y="9" width="1" height="1" class="o-k"/><rect x="0" y="10" width="2" height="1" class="o-k"/><rect x="2" y="10" width="5" height="1" class="o-c"/><rect x="7" y="10" width="2" height="1" class="o-k"/><rect x="9" y="10" width="5" height="1" class="o-c"/><rect x="14" y="10" width="2" height="1" class="o-k"/><rect x="1" y="11" width="1" height="1" class="o-k"/><rect x="2" y="11" width="1" height="1" class="o-b"/><rect x="3" y="11" width="10" height="1" class="o-c"/><rect x="13" y="11" width="1" height="1" class="o-b"/><rect x="14" y="11" width="1" height="1" class="o-k"/><rect x="2" y="12" width="1" height="1" class="o-k"/><rect x="3" y="12" width="10" height="1" class="o-b"/><rect x="13" y="12" width="1" height="1" class="o-k"/><rect x="3" y="13" width="10" height="1" class="o-k"/></svg><svg class="wordmark" width="160.0" height="14" viewBox="0 0 80 7" shape-rendering="crispEdges" role="img" aria-label="Otterview Labs"><rect x="1" y="0" width="3" height="1"/><rect x="0" y="1" width="1" height="1"/><rect x="4" y="1" width="1" height="1"/><rect x="0" y="2" width="1" height="1"/><rect x="4" y="2" width="1" height="1"/><rect x="0" y="3" width="1" height="1"/><rect x="4" y="3" width="1" height="1"/><rect x="0" y="4" width="1" height="1"/><rect x="4" y="4" width="1" height="1"/><rect x="0" y="5" width="1" height="1"/><rect x="4" y="5" width="1" height="1"/><rect x="1" y="6" width="3" height="1"/><rect x="6" y="0" width="5" height="1"/><rect x="8" y="1" width="1" height="1"/><rect x="8" y="2" width="1" height="1"/><rect x="8" y="3" width="1" height="1"/><rect x="8" y="4" width="1" height="1"/><rect x="8" y="5" width="1" height="1"/><rect x="8" y="6" width="1" height="1"/><rect x="12" y="0" width="5" height="1"/><rect x="14" y="1" width="1" height="1"/><rect x="14" y="2" width="1" height="1"/><rect x="14" y="3" width="1" height="1"/><rect x="14" y="4" width="1" height="1"/><rect x="14" y="5" width="1" height="1"/><rect x="14" y="6" width="1" height="1"/><rect x="18" y="0" width="5" height="1"/><rect x="18" y="1" width="1" height="1"/><rect x="18" y="2" width="1" height="1"/><rect x="18" y="3" width="4" height="1"/><rect x="18" y="4" width="1" height="1"/><rect x="18" y="5" width="1" height="1"/><rect x="18" y="6" width="5" height="1"/><rect x="24" y="0" width="4" height="1"/><rect x="24" y="1" width="1" height="1"/><rect x="28" y="1" width="1" height="1"/><rect x="24" y="2" width="1" height="1"/><rect x="28" y="2" width="1" height="1"/><rect x="24" y="3" width="4" height="1"/><rect x="24" y="4" width="1" height="1"/><rect x="26" y="4" width="1" height="1"/><rect x="24" y="5" width="1" height="1"/><rect x="27" y="5" width="1" height="1"/><rect x="24" y="6" width="1" height="1"/><rect x="28" y="6" width="1" height="1"/><rect x="30" y="0" width="1" height="1"/><rect x="34" y="0" width="1" height="1"/><rect x="30" y="1" width="1" height="1"/><rect x="34" y="1" width="1" height="1"/><rect x="31" y="2" width="1" height="1"/><rect x="33" y="2" width="1" height="1"/><rect x="31" y="3" width="1" height="1"/><rect x="33" y="3" width="1" height="1"/><rect x="31" y="4" width="1" height="1"/><rect x="33" y="4" width="1" height="1"/><rect x="32" y="5" width="1" height="1"/><rect x="32" y="6" width="1" height="1"/><rect x="37" y="0" width="3" height="1"/><rect x="38" y="1" width="1" height="1"/><rect x="38" y="2" width="1" height="1"/><rect x="38" y="3" width="1" height="1"/><rect x="38" y="4" width="1" height="1"/><rect x="38" y="5" width="1" height="1"/><rect x="37" y="6" width="3" height="1"/><rect x="42" y="0" width="5" height="1"/><rect x="42" y="1" width="1" height="1"/><rect x="42" y="2" width="1" height="1"/><rect x="42" y="3" width="4" height="1"/><rect x="42" y="4" width="1" height="1"/><rect x="42" y="5" width="1" height="1"/><rect x="42" y="6" width="5" height="1"/><rect x="48" y="0" width="1" height="1"/><rect x="52" y="0" width="1" height="1"/><rect x="48" y="1" width="1" height="1"/><rect x="52" y="1" width="1" height="1"/><rect x="48" y="2" width="1" height="1"/><rect x="52" y="2" width="1" height="1"/><rect x="48" y="3" width="1" height="1"/><rect x="50" y="3" width="1" height="1"/><rect x="52" y="3" width="1" height="1"/><rect x="48" y="4" width="1" height="1"/><rect x="50" y="4" width="1" height="1"/><rect x="52" y="4" width="1" height="1"/><rect x="48" y="5" width="2" height="1"/><rect x="51" y="5" width="2" height="1"/><rect x="48" y="6" width="1" height="1"/><rect x="52" y="6" width="1" height="1"/><rect x="57" y="0" width="1" height="1"/><rect x="57" y="1" width="1" height="1"/><rect x="57" y="2" width="1" height="1"/><rect x="57" y="3" width="1" height="1"/><rect x="57" y="4" width="1" height="1"/><rect x="57" y="5" width="1" height="1"/><rect x="57" y="6" width="5" height="1"/><rect x="64" y="0" width="3" height="1"/><rect x="63" y="1" width="1" height="1"/><rect x="67" y="1" width="1" height="1"/><rect x="63" y="2" width="1" height="1"/><rect x="67" y="2" width="1" height="1"/><rect x="63" y="3" width="5" height="1"/><rect x="63" y="4" width="1" height="1"/><rect x="67" y="4" width="1" height="1"/><rect x="63" y="5" width="1" height="1"/><rect x="67" y="5" width="1" height="1"/><rect x="63" y="6" width="1" height="1"/><rect x="67" y="6" width="1" height="1"/><rect x="69" y="0" width="4" height="1"/><rect x="69" y="1" width="1" height="1"/><rect x="73" y="1" width="1" height="1"/><rect x="69" y="2" width="1" height="1"/><rect x="73" y="2" width="1" height="1"/><rect x="69" y="3" width="4" height="1"/><rect x="69" y="4" width="1" height="1"/><rect x="73" y="4" width="1" height="1"/><rect x="69" y="5" width="1" height="1"/><rect x="73" y="5" width="1" height="1"/><rect x="69" y="6" width="4" height="1"/><rect x="76" y="0" width="4" height="1"/><rect x="75" y="1" width="1" height="1"/><rect x="75" y="2" width="1" height="1"/><rect x="76" y="3" width="3" height="1"/><rect x="79" y="4" width="1" height="1"/><rect x="79" y="5" width="1" height="1"/><rect x="75" y="6" width="4" height="1"/></svg></a>
+  <nav>
+    <a href="../#work">分工</a>
+    <a href="../#repos">仓库</a>
+    <a href="../#log">更新</a>
+    <a href="../blog/" aria-current="page">文章</a>
+    <a href="https://github.com/otterview-labs">GitHub</a>
+    <a class="lang" href="../../blog/agentbridge-session-management.html" hreflang="en">English</a>
+  </nav>
+</header>
+
+<section class="intro">
+  <h2>文章</h2>
+  <article class="body">
+    <div class="post-date"><time datetime="2026-09-26">2026-09-26</time></div>
+    <h1>CLI 会话都放一个地方</h1>
+    <figure class="illo">
+      <img src="../../assets/art/post-agentbridge-session-management.png" width="768" height="320" alt="像素画：一只水獭坐在三台旧显示器旁边。">
+      <figcaption>插图用 Qwen-Image 生成，再换成网站的像素配色。</figcaption>
+    </figure>
+<p>把 Codex、Claude Code 和 Gemini CLI 并排跑起来不难。难的是记住每个跑到哪了。</p>
+    <p>agentBridge 就是为了解决这个写的。本地和远程的会话都在一个页面上。</p>
+    <h3>光看终端不够</h3>
+    <p>写代码的任务很少只待在一个终端里。你得知道仓库、分支、用的模型、上一次的输出，还有那条等着批准的命令，才能搞清楚状况。这些东西散在各个窗口和 SSH 连接里，切来切去反而成了正事。</p>
+    <h3>会话留在你的机器上</h3>
+    <p>支持远程查看，只是为了少切几个窗口。会话还是在本地跑，代码和密钥不过别人的服务器。</p>
+    <p>所以我们先把启动、查看和恢复做稳。搜索、标签和更细的状态以后再说。</p>
+    <p class="back"><a href="./">← 所有文章</a></p>
+  </article>
+</section>
+
+<footer class="foot">
+  <span class="foot-otter"><svg class="otter " width="20" height="20" viewBox="0 0 16 16" shape-rendering="crispEdges" aria-hidden="true"><rect x="3" y="2" width="2" height="1" class="o-k"/><rect x="11" y="2" width="2" height="1" class="o-k"/><rect x="2" y="3" width="1" height="1" class="o-k"/><rect x="3" y="3" width="2" height="1" class="o-b"/><rect x="5" y="3" width="6" height="1" class="o-k"/><rect x="11" y="3" width="2" height="1" class="o-b"/><rect x="13" y="3" width="1" height="1" class="o-k"/><rect x="1" y="4" width="1" height="1" class="o-k"/><rect x="2" y="4" width="12" height="1" class="o-b"/><rect x="14" y="4" width="1" height="1" class="o-k"/><rect x="1" y="5" width="1" height="1" class="o-k"/><rect x="2" y="5" width="2" height="1" class="o-b"/><rect x="4" y="5" width="1" height="1" class="o-w"/><rect x="5" y="5" width="1" height="1" class="o-e"/><rect x="6" y="5" width="4" height="1" class="o-b"/><rect x="10" y="5" width="1" height="1" class="o-w"/><rect x="11" y="5" width="1" height="1" class="o-e"/><rect x="12" y="5" width="2" height="1" class="o-b"/><rect x="14" y="5" width="1" height="1" class="o-k"/><rect x="1" y="6" width="1" height="1" class="o-k"/><rect x="2" y="6" width="2" height="1" class="o-b"/><rect x="4" y="6" width="2" height="1" class="o-e"/><rect x="6" y="6" width="4" height="1" class="o-b"/><rect x="10" y="6" width="2" height="1" class="o-e"/><rect x="12" y="6" width="2" height="1" class="o-b"/><rect x="14" y="6" width="1" height="1" class="o-k"/><rect x="1" y="7" width="1" height="1" class="o-k"/><rect x="2" y="7" width="1" height="1" class="o-b"/><rect x="3" y="7" width="10" height="1" class="o-c"/><rect x="13" y="7" width="1" height="1" class="o-b"/><rect x="14" y="7" width="1" height="1" class="o-k"/><rect x="0" y="8" width="2" height="1" class="o-k"/><rect x="2" y="8" width="5" height="1" class="o-c"/><rect x="7" y="8" width="2" height="1" class="o-e"/><rect x="9" y="8" width="5" height="1" class="o-c"/><rect x="14" y="8" width="2" height="1" class="o-k"/><rect x="1" y="9" width="1" height="1" class="o-k"/><rect x="2" y="9" width="12" height="1" class="o-c"/><rect x="14" y="9" width="1" height="1" class="o-k"/><rect x="0" y="10" width="2" height="1" class="o-k"/><rect x="2" y="10" width="5" height="1" class="o-c"/><rect x="7" y="10" width="2" height="1" class="o-k"/><rect x="9" y="10" width="5" height="1" class="o-c"/><rect x="14" y="10" width="2" height="1" class="o-k"/><rect x="1" y="11" width="1" height="1" class="o-k"/><rect x="2" y="11" width="1" height="1" class="o-b"/><rect x="3" y="11" width="10" height="1" class="o-c"/><rect x="13" y="11" width="1" height="1" class="o-b"/><rect x="14" y="11" width="1" height="1" class="o-k"/><rect x="2" y="12" width="1" height="1" class="o-k"/><rect x="3" y="12" width="10" height="1" class="o-b"/><rect x="13" y="12" width="1" height="1" class="o-k"/><rect x="3" y="13" width="10" height="1" class="o-k"/></svg>© 2026 Otterview Labs</span>
+  <span><a href="../">回到首页</a></span>
+</footer>
+
+</div>
+<script>
+document.querySelectorAll('a.lang').forEach(function (a) {
+  a.addEventListener('click', function () {
+    try { localStorage.setItem('ov-lang', a.getAttribute('hreflang') === 'en' ? 'en' : 'zh'); } catch (e) {}
+  });
+});
+(function () {
+  var fig = document.querySelector('.person');
+  if (!fig) return;
+  var nodes = document.querySelectorAll('[data-part]');
+  function set(part) {
+    fig.classList.toggle('has-hot', !!part);
+    nodes.forEach(function (n) { n.classList.toggle('is-hot', !!part && n.getAttribute('data-part') === part); });
+  }
+  nodes.forEach(function (n) {
+    var p = n.getAttribute('data-part');
+    n.addEventListener('mouseenter', function () { set(p); });
+    n.addEventListener('mouseleave', function () { set(null); });
+  });
+})();
+</script>
+</body>
+</html>
