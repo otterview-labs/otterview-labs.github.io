@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+Disallow: /old/
+Sitemap: https://otterview-labs.github.io/sitemap.xml
