@@ -10,7 +10,7 @@ function setMenu(open) {
 toggle.addEventListener('click', () => setMenu(toggle.getAttribute('aria-expanded') !== 'true'));
 nav.addEventListener('click', event => { if (event.target.closest('a')) setMenu(false); });
 document.addEventListener('keydown', event => { if (event.key === 'Escape' && toggle.getAttribute('aria-expanded') === 'true') { setMenu(false); toggle.focus(); } });
-const mobile = window.matchMedia('(max-width: 600px)');
+const mobile = window.matchMedia('(max-width: 900px)');
 mobile.addEventListener('change', () => setMenu(false));
 
 /* Keep the section context when switching language on a homepage. */
