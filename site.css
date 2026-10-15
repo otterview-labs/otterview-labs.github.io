@@ -354,3 +354,10 @@ html[lang="en"] .masthead h1{font-size:clamp(44px,5vw,66px)}
   .deployment-map{padding:28px}
   .deployment-step h2{font-size:22px}
 }
+
+
+/* User-selected Otterview wordmark. */
+.brand{min-height:44px;flex-shrink:0}
+.brand img{display:block;width:168px;height:auto;border-radius:0;object-fit:contain}
+.about-title>img{width:210px;height:auto;border-radius:0}
+@media(max-width:650px){.brand img{width:144px}.about-title>img{width:132px;height:auto;border-radius:0}}
