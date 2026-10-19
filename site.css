@@ -355,8 +355,33 @@ html[lang="en"] .masthead h1{font-size:clamp(44px,5vw,66px)}
   .deployment-step h2{font-size:22px}
 }
 
+/* aibox website architecture: public product view, shared with both locales. */
+.aibox-architecture{margin-top:52px;margin-bottom:64px;scroll-margin-top:108px}
+.architecture-heading{display:grid;grid-template-columns:1fr 1.1fr;gap:64px;align-items:start;margin-bottom:34px;padding-top:34px;border-top:1px solid var(--line)}
+.architecture-heading h2{font-size:clamp(28px,3vw,36px);font-weight:500;line-height:1.35;letter-spacing:-.025em}
+.architecture-heading p{font-size:15px;color:var(--muted);line-height:1.85;max-width:60ch}
+.aibox-architecture picture{display:block}
+.aibox-architecture img{width:100%;height:auto;display:block}
+.aibox-architecture figcaption{display:flex;align-items:baseline;justify-content:space-between;gap:28px;margin-top:22px;font-size:12px;color:var(--muted);line-height:1.8}
+.aibox-architecture figcaption a{display:inline-flex;align-items:center;gap:9px;white-space:nowrap;min-height:44px;color:var(--accent)}
+.aibox-architecture figcaption a:hover{text-decoration:underline}
+.aibox-architecture figcaption .icon{width:15px;height:15px}
+@media(max-width:650px){.aibox-architecture{margin-top:36px;margin-bottom:40px}.architecture-heading{grid-template-columns:1fr;gap:18px;margin-bottom:20px;padding-top:26px}.architecture-heading h2{font-size:29px}.architecture-heading p{font-size:15px}.aibox-architecture figcaption{display:block;margin-top:18px}.aibox-architecture figcaption a{display:flex;margin-top:8px}.aibox-architecture img{aspect-ratio:640/1507}}
 
-/* User-selected Otterview wordmark. */
+/* Verified LutraPipe design UI accompanying the public architecture proposal. */
+.composer-showcase{margin-bottom:72px;scroll-margin-top:108px}
+.composer-showcase .architecture-heading{padding-top:32px;margin-bottom:28px}
+.composer-showcase figure{margin:0}
+.composer-image-link{display:block;position:relative;background:#f4f6f8;overflow:hidden;border:1px solid var(--line);border-radius:12px;cursor:zoom-in}
+.composer-image-link img{display:block;width:100%;height:auto}
+.composer-zoom{display:flex;align-items:center;justify-content:flex-end;gap:8px;padding:14px 20px;font-size:13px;background:#fff;color:var(--accent)}
+.composer-zoom .icon{width:16px;height:16px}
+.composer-image-link:hover .composer-zoom{text-decoration:underline;text-underline-offset:4px}
+.composer-image-link:focus-visible{outline:3px solid var(--accent);outline-offset:4px}
+.composer-showcase figcaption{font-size:12px;line-height:1.8;color:var(--muted);margin-top:16px;max-width:95ch}
+@media(max-width:650px){.composer-showcase{margin-bottom:40px}.composer-showcase .architecture-heading{padding-top:24px}.composer-zoom{justify-content:flex-start;padding:12px 14px}.composer-showcase figcaption{font-size:12px}}
+
+/* User-selected Otterview otter and water wordmark; preserve native proportions. */
 .brand{min-height:44px;flex-shrink:0}
 .brand img{display:block;width:168px;height:auto;border-radius:0;object-fit:contain}
 .about-title>img{width:210px;height:auto;border-radius:0}
