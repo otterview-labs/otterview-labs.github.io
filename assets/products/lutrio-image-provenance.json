@@ -1,0 +1,15 @@
+{
+  "date": "2026-10-20",
+  "images": [
+    {
+      "file": "lutrio-training-en.png",
+      "source": "https://otterview.ai/assets/plates/current-train-cv-en.png",
+      "description": "English-localized illustration based on test data, not the current overseas service"
+    },
+    {
+      "file": "lutrio-annotation-en.png",
+      "source": "https://otterview.ai/assets/plates/workflow-annotation-en.png",
+      "description": "Synthetic assisted annotation illustration"
+    }
+  ]
+}
