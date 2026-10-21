@@ -1,0 +1,5 @@
+Asset: wenwen-shanxi-badge-v4.png
+Purpose: Product visualization for Otterview Labs tourism badge.
+Source: AI-generated edit based on the user's selected Wenwen character artwork and the existing badge product photograph.
+Edit: Replaced only the character artwork shown on the round badge screen; the device and scene remain a generated product visualization.
+Rights note: This is not third-party stock art. AI generation does not itself guarantee copyright status or non-infringement; review before commercial licensing or exclusive claims.
